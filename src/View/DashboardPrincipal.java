@@ -114,6 +114,9 @@ public class DashboardPrincipal extends javax.swing.JFrame {
         pnlVentas = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         btnFacturar = new lib.RSButtonMetro();
+        pnlAnularVenta = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        btnAnularVenta = new lib.RSButtonMetro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("COMIDA CHINA EL DRAGÓN ");
@@ -487,8 +490,8 @@ public class DashboardPrincipal extends javax.swing.JFrame {
             pnlCierreDiarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCierreDiarioLayout.createSequentialGroup()
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(btnCierreDiario, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCierreDiario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnlVentas.setBackground(new java.awt.Color(255, 255, 255));
@@ -525,8 +528,46 @@ public class DashboardPrincipal extends javax.swing.JFrame {
             pnlVentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlVentasLayout.createSequentialGroup()
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(btnFacturar, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnFacturar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        pnlAnularVenta.setBackground(new java.awt.Color(255, 255, 255));
+        pnlAnularVenta.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        pnlAnularVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pnlAnularVenta.setPreferredSize(new java.awt.Dimension(233, 226));
+
+        jLabel10.setBackground(new java.awt.Color(204, 0, 0));
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Anular Venta");
+        jLabel10.setOpaque(true);
+
+        btnAnularVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/anular venta.png"))); // NOI18N
+        btnAnularVenta.setColorHover(new java.awt.Color(0, 204, 106));
+        btnAnularVenta.setColorNormal(new java.awt.Color(255, 255, 255));
+        btnAnularVenta.setColorPressed(new java.awt.Color(0, 204, 106));
+        btnAnularVenta.setFocusPainted(false);
+        btnAnularVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnularVentaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlAnularVentaLayout = new javax.swing.GroupLayout(pnlAnularVenta);
+        pnlAnularVenta.setLayout(pnlAnularVentaLayout);
+        pnlAnularVentaLayout.setHorizontalGroup(
+            pnlAnularVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnAnularVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+        );
+        pnlAnularVentaLayout.setVerticalGroup(
+            pnlAnularVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAnularVentaLayout.createSequentialGroup()
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAnularVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout pnlSellLayout = new javax.swing.GroupLayout(pnlSell);
@@ -534,20 +575,23 @@ public class DashboardPrincipal extends javax.swing.JFrame {
         pnlSellLayout.setHorizontalGroup(
             pnlSellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSellLayout.createSequentialGroup()
-                .addContainerGap(238, Short.MAX_VALUE)
+                .addContainerGap(100, Short.MAX_VALUE)
                 .addComponent(pnlVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(52, 52, 52)
+                .addComponent(pnlAnularVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
                 .addComponent(pnlCierreDiario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(282, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         pnlSellLayout.setVerticalGroup(
             pnlSellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSellLayout.createSequentialGroup()
                 .addGap(114, 114, 114)
-                .addGroup(pnlSellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlCierreDiario, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addGroup(pnlSellLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlVentas, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                    .addComponent(pnlCierreDiario, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                    .addComponent(pnlAnularVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                .addContainerGap(310, Short.MAX_VALUE))
         );
 
         pnlBody.add(pnlSell, "card6");
@@ -731,6 +775,19 @@ public class DashboardPrincipal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
+    private void btnAnularVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnularVentaActionPerformed
+        lblSell.setBackground(new Color(0,204,106));
+        
+        lblConfiguraciones.setBackground(new Color(255,255,255));
+        lblReportes.setBackground(new Color(255,255,255));
+        lblAgregarProductos.setBackground(new Color(255,255,255));
+        lblAgregarClientes.setBackground(new Color(255,255,255));
+        
+        pnlEliminarVenta pe;
+        CambiaPanel(pnlBody, pe = new pnlEliminarVenta());
+        pe.transferFocus();
+    }//GEN-LAST:event_btnAnularVentaActionPerformed
+
 
     
     public static void main(String args[]) {
@@ -771,6 +828,7 @@ public class DashboardPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarClientes;
     private javax.swing.JButton btnAgregarProductos;
+    private lib.RSButtonMetro btnAnularVenta;
     private lib.RSButtonMetro btnCerrarSesion;
     private lib.RSButtonMetro btnCierreDiario;
     private javax.swing.JButton btnConfiguraciones;
@@ -782,6 +840,7 @@ public class DashboardPrincipal extends javax.swing.JFrame {
     private lib.RSButtonMetro btnSalir;
     private javax.swing.JButton btnSell;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblAgregarClientes;
@@ -792,6 +851,7 @@ public class DashboardPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTipoUsuariolog;
     private javax.swing.JLabel lblTittleBussiness;
     private javax.swing.JLabel lblUsuariolog;
+    private javax.swing.JPanel pnlAnularVenta;
     private javax.swing.JPanel pnlBody;
     private javax.swing.JPanel pnlCierreDiario;
     private javax.swing.JPanel pnlMenu;
