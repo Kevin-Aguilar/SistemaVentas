@@ -21,7 +21,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="PanelClientes" alignment="0" pref="989" max="32767" attributes="0"/>
+          <Component id="PanelClientes" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -45,7 +45,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="PanelBuscar" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
@@ -54,8 +54,7 @@
                               <Component id="btnEnviarMail" min="-2" pref="208" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="PanelListado" min="-2" pref="703" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="PanelListado" pref="659" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -345,37 +344,34 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="PanelTableClientes" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
+                          <Component id="PanelTableClientes" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="txtBuscar_Cliente" min="-2" pref="188" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="198" max="-2" attributes="0"/>
                               <Component id="btnEditar_Cliente" min="-2" pref="85" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnEliminar_Cliente" min="-2" pref="85" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtBuscar_Cliente" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnEditar_Cliente" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                           <Component id="btnEliminar_Cliente" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="PanelTableClientes" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Component id="PanelTableClientes" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -393,7 +389,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ScrollPaneTableClientes" pref="659" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTableClientes" pref="615" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -402,7 +398,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="ScrollPaneTableClientes" pref="234" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTableClientes" pref="0" max="32767" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>

@@ -5,6 +5,7 @@ import Controller.Cliente_controller;
 import Controller.Email_controller;
 import Model.Cliente;
 import Model.Producto;
+import com.lowagie.text.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
@@ -23,6 +24,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 
@@ -56,19 +58,23 @@ public class pnlClientes extends javax.swing.JPanel {
     public void tableClientesModel() 
     {   
         modelo = new DefaultTableModel();
-        modelo.addColumn("Código");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Teléfono");
-        modelo.addColumn("Dirección");
-        modelo.addColumn("Correo");
+        modelo.addColumn("CÓDIGO");
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("TELÉFONO");
+        modelo.addColumn("DIRECCIÓN");
+        //modelo.addColumn("CORREO");
         
         tableClientes.setModel(modelo);
 
-        tableClientes.getColumn("Código").setMaxWidth(50);    tableClientes.getColumn("Código").setMinWidth(50); tableClientes.getColumn("Código").setPreferredWidth(50);
-        tableClientes.getColumn("Nombre").setMaxWidth(160);    tableClientes.getColumn("Nombre").setMinWidth(160); tableClientes.getColumn("Nombre").setPreferredWidth(160);        
-        tableClientes.getColumn("Dirección").setMaxWidth(197);    tableClientes.getColumn("Dirección").setMinWidth(197); tableClientes.getColumn("Dirección").setPreferredWidth(197);
-        tableClientes.getColumn("Teléfono").setMaxWidth(100);    tableClientes.getColumn("Teléfono").setMinWidth(100); tableClientes.getColumn("Teléfono").setPreferredWidth(100);
-        tableClientes.getColumn("Correo").setMaxWidth(150);    tableClientes.getColumn("Correo").setMinWidth(150); tableClientes.getColumn("Correo").setPreferredWidth(150);
+        tableClientes.getColumn("CÓDIGO").setMaxWidth(60);    /*tableClientes.getColumn("CÓDIGO").setMinWidth(60);*/ tableClientes.getColumn("CÓDIGO").setPreferredWidth(60);
+        tableClientes.getColumn("NOMBRE").setMaxWidth(200);    /*tableClientes.getColumn("NOMBRE").setMinWidth(160);*/ tableClientes.getColumn("NOMBRE").setPreferredWidth(200);        
+        tableClientes.getColumn("DIRECCIÓN").setMaxWidth(255);    /*tableClientes.getColumn("DIRECCIÓN").setMinWidth(197);*/ tableClientes.getColumn("DIRECCIÓN").setPreferredWidth(255);
+        tableClientes.getColumn("TELÉFONO").setMaxWidth(100);    /*tableClientes.getColumn("TELÉFONO").setMinWidth(100);*/ tableClientes.getColumn("TELÉFONO").setPreferredWidth(100);
+        //tableClientes.getColumn("CORREO").setMaxWidth(150);    /*tableClientes.getColumn("CORREO").setMinWidth(150);*/ tableClientes.getColumn("CORREO").setPreferredWidth(150);
+        
+        
+        JTableHeader th  = tableClientes.getTableHeader();
+        th.setFont(tableClientes.getFont().deriveFont(Font.BOLD)); 
         
         ScrollPaneTableClientes.setViewportView(tableClientes);  
     }
@@ -106,7 +112,7 @@ public class pnlClientes extends javax.swing.JPanel {
             row[1] = clientes.get(i).getNombre();
             row[2] = clientes.get(i).getTelefono();
             row[3] = clientes.get(i).getDireccion();
-            row[4] = clientes.get(i).getEmail();
+           // row[3] = clientes.get(i).getEmail();
 
             modelo.addRow(row);
         }  
@@ -354,14 +360,14 @@ public class pnlClientes extends javax.swing.JPanel {
             PanelTableClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTableClientesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollPaneTableClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
+                .addComponent(ScrollPaneTableClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
                 .addContainerGap())
         );
         PanelTableClientesLayout.setVerticalGroup(
             PanelTableClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTableClientesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollPaneTableClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                .addComponent(ScrollPaneTableClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -412,29 +418,29 @@ public class pnlClientes extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(PanelListadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelListadoLayout.createSequentialGroup()
-                        .addComponent(PanelTableClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addComponent(PanelTableClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(PanelListadoLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtBuscar_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(198, 198, 198)
                         .addComponent(btnEditar_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEliminar_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))))
+                        .addGap(22, 22, 22))))
         );
         PanelListadoLayout.setVerticalGroup(
             PanelListadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelListadoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
                 .addGroup(PanelListadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtBuscar_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditar_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminar_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(PanelTableClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PanelTableClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -466,8 +472,7 @@ public class pnlClientes extends javax.swing.JPanel {
                             .addComponent(PanelDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEnviarMail, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PanelListado, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(PanelListado, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         PanelClientesLayout.setVerticalGroup(
@@ -488,7 +493,7 @@ public class pnlClientes extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 989, Short.MAX_VALUE)
+            .addComponent(PanelClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -748,11 +753,8 @@ public class pnlClientes extends javax.swing.JPanel {
         
         if(panel.equalsIgnoreCase("cliente"))
         {
-            if(txtNombre_Cliente.getText().isEmpty())
-            {
-                //lblCod.setVisible(true);  txtCodigo_Producto.requestFocus();  return estado;                
-            }
-            else if(txtTelefono_Cliente.getText().isEmpty())
+
+            if(txtTelefono_Cliente.getText().isEmpty())
             {
                 //lblPrecio.setVisible(true); txtPrecio_Producto.requestFocus(); return estado;
             }
