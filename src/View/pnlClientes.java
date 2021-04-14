@@ -52,6 +52,9 @@ public class pnlClientes extends javax.swing.JPanel {
         soloLetras(txtNombre_Cliente);
         soloNumeros(txtTelefono_Cliente);
         txtNombre_Cliente.requestFocus();
+        
+        Label_NombreCliente3.setVisible(editarCliente);
+        txtCorreo_cliente.setVisible(false);
     }
 
 
