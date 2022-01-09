@@ -56,12 +56,13 @@ public class Producto_controller
                 else
                 {
 
-                    String sqlGuardar = "INSERT INTO productos(id_producto, descripcion, precio) values(?,?,?)";
+                    String sqlGuardar = "INSERT INTO productos(id_producto, descripcion, precio, precioUberEats) values(?,?,?,?)";
 
                     miStatement = miConexion.prepareStatement(sqlGuardar);
                     miStatement.setInt(1, producto.getCodigo());
                     miStatement.setString(2, producto.getDescripcion());
                     miStatement.setDouble(3, producto.getPrecio());
+                    miStatement.setDouble(4, producto.getPrecioUberEats());
                     miStatement.execute();
 
                     estado = true;
@@ -86,12 +87,13 @@ public class Producto_controller
             {            
                 miConexion = DriverManager.getConnection(url, user, password);             
 
-                String sqlConsulta = "UPDATE productos SET descripcion = ?, precio = ? WHERE id_producto = ?";
+                String sqlConsulta = "UPDATE productos SET descripcion = ?, precio = ?, precioUberEats = ? WHERE id_producto = ?";
 
                 miStatement = miConexion.prepareStatement(sqlConsulta);
                 miStatement.setString(1, producto.getDescripcion());
                 miStatement.setDouble(2, producto.getPrecio());
-                miStatement.setInt(3, producto.getCodigo());
+                miStatement.setDouble(3, producto.getPrecioUberEats());
+                miStatement.setInt(4, producto.getCodigo());
                 miStatement.execute();
 
                 estado = true;
@@ -128,7 +130,7 @@ public class Producto_controller
                     product.setCodigo(miResultSet.getInt("id_producto"));
                     product.setDescripcion(miResultSet.getString("descripcion"));
                     product.setPrecio(miResultSet.getDouble("precio"));
-
+                    product.setPrecioUberEats(miResultSet.getDouble("precioUberEats"));
 
                     listaProductos.add(product);   //agrega el producto al arraylist
                 } 
@@ -166,7 +168,8 @@ public class Producto_controller
             {
                 producto.setCodigo(id_producto);
                 producto.setDescripcion(miResult.getString("descripcion"));
-                producto.setPrecio(miResult.getDouble("precio"));               
+                producto.setPrecio(miResult.getDouble("precio"));   
+                producto.setPrecioUberEats(miResult.getDouble("precioUberEats"));
             } 
             
             miResult.close();
@@ -224,6 +227,7 @@ public class Producto_controller
                 product.setCodigo(miResult.getInt("id_producto"));
                 product.setDescripcion(miResult.getString("descripcion"));
                 product.setPrecio(miResult.getDouble("precio"));
+                product.setPrecioUberEats(miResult.getDouble("precioUberEats"));
                 
 
                 listaProductos.add(product);   //agrega el producto al arraylist

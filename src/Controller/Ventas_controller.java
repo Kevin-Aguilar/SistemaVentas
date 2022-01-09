@@ -195,6 +195,33 @@ public class Ventas_controller
         return totalDia;        
     }
     
+    
+    public static boolean anularVenta(int factura)
+    {
+        boolean estado = false;
+        
+            try
+            {            
+                miConexion = DriverManager.getConnection(url, user, password);            
+
+                String sqlConsulta = "DELETE ventastest, detalle_ventas_test from\n" +
+                                    "ventastest join detalle_ventas_test on ventastest.id_venta = detalle_ventas_test.id_venta where ventastest.id_venta = ?;";
+
+                miStatement = miConexion.prepareStatement(sqlConsulta);
+                miStatement.setInt(1, factura);
+                miStatement.execute();
+
+                estado = true;
+                miConexion.close();
+
+            } catch (SQLException ex)
+            {
+                ex.printStackTrace();
+            } 
+            
+        return estado; 
+    }
+    
     public static List<Ventas> listarVentas() 
     {       
         List<Ventas> listaVentas = new ArrayList<>();
@@ -670,7 +697,7 @@ public class Ventas_controller
             
             /********************************************************/
 
-            JasperExportManager.exportReportToPdfFile( jPrint, "Facturas/".concat(factura.concat(".pdf")));//"src/Facturas/"+factura+".pdf");
+            //JasperExportManager.exportReportToPdfFile( jPrint, "Facturas/".concat(factura.concat(".pdf")));//"src/Facturas/"+factura+".pdf");
             //guardarFacturaPDF(parametros, listaDetalle, factura);
             
             

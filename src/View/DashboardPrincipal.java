@@ -545,9 +545,9 @@ public class DashboardPrincipal extends javax.swing.JFrame {
         jLabel10.setOpaque(true);
 
         btnAnularVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/anular venta.png"))); // NOI18N
-        btnAnularVenta.setColorHover(new java.awt.Color(0, 204, 106));
+        btnAnularVenta.setColorHover(new java.awt.Color(204, 0, 0));
         btnAnularVenta.setColorNormal(new java.awt.Color(255, 255, 255));
-        btnAnularVenta.setColorPressed(new java.awt.Color(0, 204, 106));
+        btnAnularVenta.setColorPressed(new java.awt.Color(204, 0, 0));
         btnAnularVenta.setFocusPainted(false);
         btnAnularVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
