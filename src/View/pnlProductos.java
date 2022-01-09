@@ -4,6 +4,7 @@ package View;
 //import Controller.DBProductoInteraccion;
 import Controller.Producto_controller;
 import Model.Producto;
+import com.lowagie.text.Font;
 import java.awt.BorderLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -18,6 +19,7 @@ import java.util.logging.Logger;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 
@@ -36,7 +38,8 @@ public class pnlProductos extends javax.swing.JPanel
     boolean editarProducto = false;
     private TableRowSorter trsFiltro;
     DecimalFormat df = new DecimalFormat("#,###.00");
-
+    DecimalFormat dfNormal = new DecimalFormat("#.##");
+    
     public pnlProductos()
     {
         initComponents();
@@ -62,7 +65,8 @@ public class pnlProductos extends javax.swing.JPanel
         
        // lblCod.setVisible(false); lblDescrip.setVisible(false); lblPrecio.setVisible(false);
 
-        soloNumReales(txtPrecio_Producto); 
+        soloNumReales(txtPrecio_Producto);
+        soloNumReales(txtPrecio_Uber);
         soloNumeros(txtCodigo_Producto);
     }
     
@@ -109,16 +113,24 @@ public class pnlProductos extends javax.swing.JPanel
     public void tableProductosModel() 
     {   
         modelo = new DefaultTableModel();
-        modelo.addColumn("Código");
-        modelo.addColumn("Descripción");
-        modelo.addColumn("Precio");
+        modelo.addColumn("CÓDIGO");
+        modelo.addColumn("DESCRIPCIÓN");
+        modelo.addColumn("PRECIO");
+        modelo.addColumn("PRECIO UberEats");
         
         tableProductos.setModel(modelo);
         
-        TableColumn colCod = tableProductos.getColumn("Código");       colCod.setPreferredWidth(1);  
-        TableColumn colDes = tableProductos.getColumn("Descripción");  colDes.setPreferredWidth(350);
-        TableColumn colPre = tableProductos.getColumn("Precio");       colPre.setPreferredWidth(1);
-                
+        TableColumn colCod = tableProductos.getColumn("CÓDIGO");       colCod.setPreferredWidth(1);  
+        TableColumn colDes = tableProductos.getColumn("DESCRIPCIÓN");  colDes.setPreferredWidth(250);
+        TableColumn colPre = tableProductos.getColumn("PRECIO");       colPre.setPreferredWidth(45);
+        TableColumn colPreU = tableProductos.getColumn("PRECIO UberEats");       colPreU.setPreferredWidth(60);
+        
+        
+        JTableHeader th  = tableProductos.getTableHeader();
+        th.setFont(tableProductos.getFont().deriveFont(Font.BOLD));       
+        //tableProductos.setFont(tableProductos.getFont().deriveFont(Font.BOLD));
+        
+        
         ScrollPaneTable.setViewportView(tableProductos);  
     }
     
@@ -152,8 +164,9 @@ public class pnlProductos extends javax.swing.JPanel
         {
             row[0] = productos.get(i).getCodigo();
             row[1] = productos.get(i).getDescripcion();
-            row[2] = df.format(productos.get(i).getPrecio());
-
+            row[2] = productos.get(i).getPrecio();
+            row[3] = productos.get(i).getPrecioUberEats();
+            
             modelo.addRow(row);
         }  
         tableProductos.setVisible(true);
@@ -186,6 +199,8 @@ public class pnlProductos extends javax.swing.JPanel
         txtPrecio_Producto = new javax.swing.JTextField();
         btnCancelar_Producto = new javax.swing.JButton();
         btnGuardar_Producto = new javax.swing.JButton();
+        Label_UnidadPDT1 = new javax.swing.JLabel();
+        txtPrecio_Uber = new javax.swing.JTextField();
         PanelBusqueda = new javax.swing.JPanel();
         Label = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -252,7 +267,6 @@ public class pnlProductos extends javax.swing.JPanel
         Label_DescripcionPDT.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Label_DescripcionPDT.setText("Descripción");
 
-        txtDescripcion_Producto.setRequestFocusEnabled(false);
         txtDescripcion_Producto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtDescripcion_ProductoProductoKeyPressedEventsTXT(evt);
@@ -263,7 +277,6 @@ public class pnlProductos extends javax.swing.JPanel
         Label_UnidadPDT.setText("Precio");
         Label_UnidadPDT.setToolTipText("");
 
-        txtPrecio_Producto.setRequestFocusEnabled(false);
         txtPrecio_Producto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtPrecio_ProductoProductoKeyPressedEventsTXT(evt);
@@ -296,16 +309,23 @@ public class pnlProductos extends javax.swing.JPanel
             }
         });
 
+        Label_UnidadPDT1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        Label_UnidadPDT1.setText("Precio UberEats");
+        Label_UnidadPDT1.setToolTipText("");
+
+        txtPrecio_Uber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPrecio_UberProductoKeyPressedEventsTXT(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelDATOSLayout = new javax.swing.GroupLayout(PanelDATOS);
         PanelDATOS.setLayout(PanelDATOSLayout);
         PanelDATOSLayout.setHorizontalGroup(
             PanelDATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDATOSLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(PanelDATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelDATOSLayout.createSequentialGroup()
-                        .addComponent(txtPrecio_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(PanelDATOSLayout.createSequentialGroup()
                         .addGroup(PanelDATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
@@ -318,7 +338,13 @@ public class pnlProductos extends javax.swing.JPanel
                                 .addComponent(btnGuardar_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnCancelar_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(20, Short.MAX_VALUE))
+                    .addGroup(PanelDATOSLayout.createSequentialGroup()
+                        .addGroup(PanelDATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPrecio_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPrecio_Uber, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label_UnidadPDT1))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         PanelDATOSLayout.setVerticalGroup(
             PanelDATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,7 +363,11 @@ public class pnlProductos extends javax.swing.JPanel
                 .addComponent(Label_UnidadPDT)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPrecio_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Label_UnidadPDT1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPrecio_Uber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(PanelDATOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -400,14 +430,14 @@ public class pnlProductos extends javax.swing.JPanel
             PanelTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTableLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollPaneTable, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                .addComponent(ScrollPaneTable, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
                 .addContainerGap())
         );
         PanelTableLayout.setVerticalGroup(
             PanelTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTableLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollPaneTable, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                .addComponent(ScrollPaneTable, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -453,7 +483,7 @@ public class pnlProductos extends javax.swing.JPanel
                         .addComponent(txtBuscar_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Label)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(45, 45, 45)
                         .addComponent(btnEditar_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnEliminar_Producto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -483,8 +513,8 @@ public class pnlProductos extends javax.swing.JPanel
                 .addContainerGap()
                 .addComponent(PanelDATOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addComponent(PanelBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(PanelMenuLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(PanelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -496,9 +526,9 @@ public class pnlProductos extends javax.swing.JPanel
                 .addContainerGap()
                 .addComponent(PanelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelDATOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PanelBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(PanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PanelDATOS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE))
                 .addGap(49, 49, 49))
         );
 
@@ -506,7 +536,7 @@ public class pnlProductos extends javax.swing.JPanel
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 1020, Short.MAX_VALUE)
+            .addComponent(PanelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -537,8 +567,12 @@ public class pnlProductos extends javax.swing.JPanel
     private void txtPrecio_ProductoProductoKeyPressedEventsTXT(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtPrecio_ProductoProductoKeyPressedEventsTXT
     {//GEN-HEADEREND:event_txtPrecio_ProductoProductoKeyPressedEventsTXT
 
-        if(evt.getKeyCode() == KeyEvent.VK_UP)
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+            txtPrecio_Uber.requestFocus();
+        else if(evt.getKeyCode() == KeyEvent.VK_UP)
             txtDescripcion_Producto.requestFocus(); 
+        else if(evt.getKeyCode() == KeyEvent.VK_DOWN)
+            txtPrecio_Uber.requestFocus();
     }//GEN-LAST:event_txtPrecio_ProductoProductoKeyPressedEventsTXT
 
     private void btnCancelar_ProductoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCancelar_ProductoActionPerformed
@@ -566,15 +600,17 @@ public class pnlProductos extends javax.swing.JPanel
    
     public void guardarProducto() throws SQLException, ClassNotFoundException
     {
-        //lblCod.setVisible(false); lblDescrip.setVisible(false); lblPrecio.setVisible(false);
+        double precioUberEats = 0.0;
         
         if(validaTXT("producto"))
         {           
             int codigo = parseInt(txtCodigo_Producto.getText());
             double precio = Double.parseDouble(txtPrecio_Producto.getText());
-
             
-            Producto producto = new Producto(codigo, txtDescripcion_Producto.getText(), precio);
+            if(!"".equals(txtPrecio_Uber.getText()))
+                precioUberEats = Double.parseDouble(txtPrecio_Uber.getText());
+            
+            Producto producto = new Producto(codigo, txtDescripcion_Producto.getText(), precio, precioUberEats);
 
             if(Producto_controller.guardarProducto(producto))
             {                
@@ -592,7 +628,7 @@ public class pnlProductos extends javax.swing.JPanel
     
     public void editarProducto()
     {
-        //lblCod.setVisible(false); lblDescrip.setVisible(false); lblPrecio.setVisible(false);
+        double precioUberEats = 0.0;
         
         if(validaTXT("producto"))
         {           
@@ -600,7 +636,10 @@ public class pnlProductos extends javax.swing.JPanel
             int codigo = parseInt(txtCodigo_Producto.getText());
             double precio = Double.parseDouble(txtPrecio_Producto.getText());
 
-            Producto producto = new Producto(codigo, txtDescripcion_Producto.getText(), precio);
+            if(!"".equals(txtPrecio_Uber.getText()))
+                precioUberEats = Double.parseDouble(txtPrecio_Uber.getText());
+            
+            Producto producto = new Producto(codigo, txtDescripcion_Producto.getText(), precio, precioUberEats);
 
             if(Producto_controller.editarProducto(producto))
             {
@@ -647,6 +686,7 @@ public class pnlProductos extends javax.swing.JPanel
         txtDescripcion_Producto.setText("");
         txtPrecio_Producto.setText("");        
         txtBuscar_Producto.setText("");
+        txtPrecio_Uber.setText("");
     }    
     
     
@@ -727,6 +767,7 @@ public class pnlProductos extends javax.swing.JPanel
                 editarProducto = true;
                 txtDescripcion_Producto.setText(String.valueOf(tableProductos.getValueAt(fila, 1))); txtDescripcion_Producto.requestFocus();
                 txtPrecio_Producto.setText(String.valueOf(tableProductos.getValueAt(fila, 2)));
+                txtPrecio_Uber.setText(String.valueOf(tableProductos.getValueAt(fila, 3)));
 
             }
         }
@@ -774,6 +815,11 @@ public class pnlProductos extends javax.swing.JPanel
 
     }//GEN-LAST:event_txtBuscar_ProductoKeyPressed
 
+    private void txtPrecio_UberProductoKeyPressedEventsTXT(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecio_UberProductoKeyPressedEventsTXT
+        if(evt.getKeyCode() == KeyEvent.VK_UP)
+            txtPrecio_Producto.requestFocus();
+    }//GEN-LAST:event_txtPrecio_UberProductoKeyPressedEventsTXT
+
     public void eliminarProducto(int codigo)
     {
         Producto producto = new Producto();
@@ -797,6 +843,7 @@ public class pnlProductos extends javax.swing.JPanel
     private javax.swing.JLabel Label_CodigoPDT;
     private javax.swing.JLabel Label_DescripcionPDT;
     private javax.swing.JLabel Label_UnidadPDT;
+    private javax.swing.JLabel Label_UnidadPDT1;
     private javax.swing.JPanel PanelBusqueda;
     private javax.swing.JPanel PanelDATOS;
     private javax.swing.JPanel PanelMenu;
@@ -815,5 +862,6 @@ public class pnlProductos extends javax.swing.JPanel
     public javax.swing.JTextField txtCodigo_Producto;
     public javax.swing.JTextField txtDescripcion_Producto;
     public javax.swing.JTextField txtPrecio_Producto;
+    public javax.swing.JTextField txtPrecio_Uber;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,23 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package View;
 
-import Controller.Cliente_controller;
-import Controller.Usuario_controller;
 import Controller.Ventas_controller;
 import static Controller.Ventas_controller.listaDetalle;
 import Model.Cliente;
 import Model.Ventas;
-import static View.pnlClientes.clientes;
-import static View.pnlReportesDia.contenedorFactura;
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import static java.lang.Integer.parseInt;
 import static java.lang.String.valueOf;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -35,12 +26,15 @@ import rojerusan.RSNotifyAnimated;
  *
  * @author Kevin
  */
-public class pnlBuscarFactura extends javax.swing.JPanel {
+public class pnlEliminarVenta extends javax.swing.JPanel {
 
+     
+    int numeroFactura;
     
-    public pnlBuscarFactura() {
+    public pnlEliminarVenta() {
         initComponents();
-        limpiaFocus();
+        txtFactura.requestFocus();
+        //this.setLocationRelativeTo(null);
     }
 
 
@@ -50,20 +44,18 @@ public class pnlBuscarFactura extends javax.swing.JPanel {
 
         PanelTOPV = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        PanelBusquedaV = new javax.swing.JPanel();
-        btnBuscar = new javax.swing.JButton();
-        contenedorFactura = new javax.swing.JPanel();
         txtFactura = new javax.swing.JTextField();
+        btnEliminar = new javax.swing.JButton();
+        contenedorFactura = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(884, 550));
 
         PanelTOPV.setBackground(new java.awt.Color(255, 255, 255));
         PanelTOPV.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel5.setText("Buscar factura");
+        jLabel5.setText("Factura a eliminar");
 
         javax.swing.GroupLayout PanelTOPVLayout = new javax.swing.GroupLayout(PanelTOPV);
         PanelTOPV.setLayout(PanelTOPVLayout);
@@ -71,38 +63,16 @@ public class pnlBuscarFactura extends javax.swing.JPanel {
             PanelTOPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTOPVLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(87, 87, 87))
         );
         PanelTOPVLayout.setVerticalGroup(
             PanelTOPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTOPVLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(PanelTOPVLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        PanelBusquedaV.setBackground(new java.awt.Color(255, 255, 255));
-        PanelBusquedaV.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        btnBuscar.setBackground(new java.awt.Color(255, 255, 255));
-        btnBuscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/buscar.png"))); // NOI18N
-        btnBuscar.setText("Buscar");
-        btnBuscar.setBorder(null);
-        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBuscar.setFocusPainted(false);
-        btnBuscar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-
-        contenedorFactura.setBackground(new java.awt.Color(255, 255, 255));
-        contenedorFactura.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        contenedorFactura.setPreferredSize(new java.awt.Dimension(200, 236));
-        contenedorFactura.setLayout(new java.awt.BorderLayout());
 
         txtFactura.setFont(new java.awt.Font("Tahoma", 1, 14));
         txtFactura.setToolTipText("Número de factura");
@@ -115,56 +85,88 @@ public class pnlBuscarFactura extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout PanelBusquedaVLayout = new javax.swing.GroupLayout(PanelBusquedaV);
-        PanelBusquedaV.setLayout(PanelBusquedaVLayout);
-        PanelBusquedaVLayout.setHorizontalGroup(
-            PanelBusquedaVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelBusquedaVLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(PanelBusquedaVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelBusquedaVLayout.createSequentialGroup()
-                        .addComponent(txtFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(contenedorFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(411, Short.MAX_VALUE))
-        );
-        PanelBusquedaVLayout.setVerticalGroup(
-            PanelBusquedaVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelBusquedaVLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelBusquedaVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PanelBusquedaVLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(txtFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(contenedorFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorder(null);
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setFocusPainted(false);
+        btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        contenedorFactura.setBackground(new java.awt.Color(255, 255, 255));
+        contenedorFactura.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        contenedorFactura.setPreferredSize(new java.awt.Dimension(200, 236));
+        contenedorFactura.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addComponent(PanelTOPV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(PanelTOPV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PanelBusquedaV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(1, 1, 1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(contenedorFactura, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(PanelTOPV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelBusquedaV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(contenedorFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void txtFacturaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFacturaKeyPressed
+
+        int code = evt.getKeyCode();
+
+        if(code == KeyEvent.VK_ENTER)
+        {
+            if (!"".equals(txtFactura.getText()))
+            {
+                procesoBusqueda();
+            }
+        }
+    }//GEN-LAST:event_txtFacturaKeyPressed
+
+    private void txtFacturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFacturaKeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtFacturaKeyTyped
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+       
+        
+        if(Ventas_controller.anularVenta(numeroFactura))
+           notificaciones("facturaDelete");
+       
+       contenedorFactura.removeAll();
+       contenedorFactura.repaint();
+       limpiaFocus();
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+
     private void procesoBusqueda()
     {
-        int numeroFactura = parseInt(txtFactura.getText());
+        numeroFactura = parseInt(txtFactura.getText());
         
         Ventas venta = new Ventas();       
         venta = Ventas_controller.listarVentaPorFactura(numeroFactura);
@@ -202,41 +204,14 @@ public class pnlBuscarFactura extends javax.swing.JPanel {
             limpiaFocus();            
         }
     }
-    
-    
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        procesoBusqueda();
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
-
-    private void txtFacturaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFacturaKeyPressed
-
-        int code = evt.getKeyCode();
-
-        if(code == KeyEvent.VK_ENTER)
-        {
-            if (!"".equals(txtFactura.getText()))
-            {
-                procesoBusqueda();
-            }
-        }
-    }//GEN-LAST:event_txtFacturaKeyPressed
-
-    private void txtFacturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFacturaKeyTyped
-        char car = evt.getKeyChar();
-        if ((car < '0' || car > '9') && (car != (char) KeyEvent.VK_BACK_SPACE)) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtFacturaKeyTyped
-
+        
     private void limpiaFocus()
     {
         txtFactura.setText("");
         txtFactura.requestFocus();
     }
-    
-    
-   public void generarReporteDetalleVenta(String factura, String vendedor, String cliente, String telefono, String direccion, String fecha)
+        
+    public void generarReporteDetalleVenta(String factura, String vendedor, String cliente, String telefono, String direccion, String fecha)
     {
         //URL jasperUrl;
         try 
@@ -269,8 +244,9 @@ public class pnlBuscarFactura extends javax.swing.JPanel {
             Logger.getLogger(Ventas_controller.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
-   
-    public static void notificaciones(String accion)
+    
+    
+    public void notificaciones(String accion)
     {
         switch(accion)
         {
@@ -279,19 +255,18 @@ public class pnlBuscarFactura extends javax.swing.JPanel {
                             RSNotifyAnimated.AnimationNotify.RightLeft, RSNotifyAnimated.TypeNotify.WARNING).setVisible(true);
                  break;
                 
-            case "codExist":
-                    new rojerusan.RSNotifyAnimated("", "El código del producto ya existe", 4, RSNotifyAnimated.PositionNotify.BottomRight, 
+            case "facturaDelete":
+                    new rojerusan.RSNotifyAnimated("", "LA FACTURA "+numeroFactura+" HA SIDO ANULADA", 4, RSNotifyAnimated.PositionNotify.BottomRight, 
                          RSNotifyAnimated.AnimationNotify.RightLeft, RSNotifyAnimated.TypeNotify.WARNING).setVisible(true);
                 break;  
                     
         }        
     }
-   
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelBusquedaV;
     private javax.swing.JPanel PanelTOPV;
-    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel contenedorFactura;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txtFactura;

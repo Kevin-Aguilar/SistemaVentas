@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="164" pageHeight="567" columnWidth="164" leftMargin="0" rightMargin="0" topMargin="5" bottomMargin="5" uuid="cd9bf34e-e9d9-45ea-b441-af5f4106b707">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="164" pageHeight="850" columnWidth="164" leftMargin="0" rightMargin="0" topMargin="5" bottomMargin="5" uuid="cd9bf34e-e9d9-45ea-b441-af5f4106b707">
 	<property name="ireport.zoom" value="4.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -94,23 +94,23 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="14" splitType="Stretch">
+		<band height="16" splitType="Stretch">
 			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="69" height="12" isRemoveLineWhenBlank="true" uuid="05c2c47c-d2ed-487b-a6b9-49398717fb27"/>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="2" width="69" height="12" isRemoveLineWhenBlank="true" uuid="05c2c47c-d2ed-487b-a6b9-49398717fb27"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{concepto}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00" isBlankWhenNull="true">
-				<reportElement x="69" y="0" width="33" height="12" isRemoveLineWhenBlank="true" uuid="4f6216ba-e4f0-4681-a304-a890425eac06"/>
+				<reportElement x="69" y="2" width="33" height="12" isRemoveLineWhenBlank="true" uuid="4f6216ba-e4f0-4681-a304-a890425eac06"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ingreso}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00" isBlankWhenNull="true">
-				<reportElement x="103" y="0" width="33" height="12" isRemoveLineWhenBlank="true" uuid="8dbd423d-8806-4767-9971-a3327a706b37"/>
+				<reportElement x="103" y="2" width="33" height="12" isRemoveLineWhenBlank="true" uuid="8dbd423d-8806-4767-9971-a3327a706b37"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="8"/>
 				</textElement>

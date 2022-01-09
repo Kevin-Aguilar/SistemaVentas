@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="164" pageHeight="400" columnWidth="164" leftMargin="0" rightMargin="0" topMargin="5" bottomMargin="5" uuid="cd9bf34e-e9d9-45ea-b441-af5f4106b707">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="164" pageHeight="708" columnWidth="164" leftMargin="0" rightMargin="0" topMargin="5" bottomMargin="5" uuid="cd9bf34e-e9d9-45ea-b441-af5f4106b707">
 	<property name="ireport.zoom" value="6.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="649"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="numero_factura" class="java.lang.String"/>
 	<parameter name="nombre_cliente" class="java.lang.String"/>
 	<parameter name="direccion_cliente" class="java.lang.String"/>
@@ -178,28 +178,28 @@
 	<detail>
 		<band height="16" splitType="Stretch">
 			<textField isStretchWithOverflow="true" pattern="">
-				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="47" height="12" uuid="05c2c47c-d2ed-487b-a6b9-49398717fb27"/>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="2" width="47" height="12" uuid="05c2c47c-d2ed-487b-a6b9-49398717fb27"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="54" y="0" width="15" height="12" uuid="fde50ed0-7a0b-4abe-b8ea-63090be3c688"/>
+				<reportElement stretchType="RelativeToTallestObject" x="54" y="2" width="15" height="12" uuid="fde50ed0-7a0b-4abe-b8ea-63090be3c688"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00">
-				<reportElement stretchType="RelativeToTallestObject" x="78" y="0" width="30" height="12" uuid="8ada6e84-f842-4f8a-862b-d71bad682f48"/>
+				<reportElement stretchType="RelativeToTallestObject" x="78" y="2" width="30" height="12" uuid="8ada6e84-f842-4f8a-862b-d71bad682f48"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00">
-				<reportElement stretchType="RelativeToTallestObject" x="107" y="0" width="29" height="12" uuid="6393fc9e-c3a4-40c5-99f6-4ca6272d1948"/>
+				<reportElement stretchType="RelativeToTallestObject" x="107" y="2" width="29" height="12" uuid="6393fc9e-c3a4-40c5-99f6-4ca6272d1948"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Arial" size="8"/>
 				</textElement>

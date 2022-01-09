@@ -10,6 +10,7 @@ public class Producto
     private int codigo;
     private String descripcion;
     private double precio;
+    private double precio_UberEats;
 
     
     public Producto(){}
@@ -19,6 +20,14 @@ public class Producto
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.precio = precio;
+    }
+    
+    public Producto(int codigo, String descripcion, double precio, double precioUberEats)
+    {
+        this.codigo = codigo;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.precio_UberEats = precioUberEats;
     }
     
     
@@ -37,9 +46,12 @@ public class Producto
         this.precio = precio;
     }
 
-
+    public void setPrecioUberEats(double precioUberEats)
+    {
+        this.precio_UberEats = precioUberEats;
+    }
     public int getCodigo(){ return codigo; }
     public String getDescripcion(){ return descripcion; }
     public double getPrecio(){ return precio; }
-      
+    public double getPrecioUberEats(){ return precio_UberEats; }      
 }

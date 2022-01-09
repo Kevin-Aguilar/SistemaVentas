@@ -68,6 +68,7 @@ public class pnlVentas extends javax.swing.JFrame {
     double transporte;
     String codCliente;
     boolean existeCliente = false;
+    boolean isUberClient = false;
     DecimalFormat df = new DecimalFormat("#,###.00");
     
 
@@ -96,6 +97,9 @@ public class pnlVentas extends javax.swing.JFrame {
         soloNumReales(txtProducto);
         verificaCheckEmail();
         abrirMaximizado();
+        
+        checkEnviarFactura.setVisible(false);
+        //btnAnularVenta.setVisible(false);
     }
 
     
@@ -1069,22 +1073,63 @@ public class pnlVentas extends javax.swing.JFrame {
             {
                 codCadena = parseInt(txtProducto.getText());
                
-                for (int i = 0; i < productos.size(); i++) 
+                if(isUberClient == true )
                 {
-                    if (productos.get(i).getCodigo() == codCadena) 
-                    {
-                        String cod = String.valueOf(productos.get(i).getCodigo());
+                   for (int i = 0; i < productos.size(); i++) 
+                   {
+                       if (productos.get(i).getCodigo() == codCadena) 
+                       {
+                           String cod = String.valueOf(productos.get(i).getCodigo());
 
-                        txtDescripcion.setText(productos.get(i).getDescripcion());
-                        txtPrecio.setText(String.valueOf(productos.get(i).getPrecio()));
-                        //txtCantidad.requestFocus();
-                        productoSeleccionado = new Producto(productos.get(i).getCodigo(), productos.get(i).getDescripcion(), productos.get(i).getPrecio());
-                        txtCantidad.requestFocus();
-                        
-                         jcomboProductos.setSelectedIndex(i+1);
+                           txtDescripcion.setText(productos.get(i).getDescripcion());
+                           txtPrecio.setText(String.valueOf(productos.get(i).getPrecioUberEats()));
+                           //txtCantidad.requestFocus();
+                           productoSeleccionado = new Producto(productos.get(i).getCodigo(), productos.get(i).getDescripcion(), productos.get(i).getPrecioUberEats());
+                           txtCantidad.requestFocus();
 
-                    }
-                } 
+                           System.out.println("precio normal: "+productos.get(i).getPrecio() +"  precio uber: "+productos.get(i).getPrecioUberEats());
+                            jcomboProductos.setSelectedIndex(i+1);
+
+                       }
+                   } 
+                   
+                }else
+                {
+                   for (int i = 0; i < productos.size(); i++) 
+                   {
+                       if (productos.get(i).getCodigo() == codCadena) 
+                       {
+                           String cod = String.valueOf(productos.get(i).getCodigo());
+
+                           txtDescripcion.setText(productos.get(i).getDescripcion());
+                           txtPrecio.setText(String.valueOf(productos.get(i).getPrecio()));
+                           //txtCantidad.requestFocus();
+                           productoSeleccionado = new Producto(productos.get(i).getCodigo(), productos.get(i).getDescripcion(), productos.get(i).getPrecio());
+                           txtCantidad.requestFocus();
+
+                            jcomboProductos.setSelectedIndex(i+1);
+
+                       }
+                   }                     
+                }
+                
+                
+//                for (int i = 0; i < productos.size(); i++) 
+//                {
+//                    if (productos.get(i).getCodigo() == codCadena) 
+//                    {
+//                        String cod = String.valueOf(productos.get(i).getCodigo());
+//
+//                        txtDescripcion.setText(productos.get(i).getDescripcion());
+//                        txtPrecio.setText(String.valueOf(productos.get(i).getPrecio()));
+//                        //txtCantidad.requestFocus();
+//                        productoSeleccionado = new Producto(productos.get(i).getCodigo(), productos.get(i).getDescripcion(), productos.get(i).getPrecio());
+//                        txtCantidad.requestFocus();
+//                        
+//                         jcomboProductos.setSelectedIndex(i+1);
+//
+//                    }
+//                } 
                 
             } 
         }else if(code == KeyEvent.VK_RIGHT)       
@@ -1257,6 +1302,13 @@ public class pnlVentas extends javax.swing.JFrame {
 
                     if (clientes.get(i).getTelefono().equals(tel)) 
                     {
+                        if(clientes.get(i).getTelefono().equals("300"))
+                        {
+                            isUberClient = true;
+                            System.out.println("cliente uber");
+                        }
+                            
+                            
                         codCliente = String.valueOf(clientes.get(i).getCodigo());
 
                         txtNombre_cliente.setText(clientes.get(i).getNombre());
@@ -1353,21 +1405,42 @@ public class pnlVentas extends javax.swing.JFrame {
        
         if(code.equalsIgnoreCase("comboBoxEdited")) 
         {
-            String pro = jcomboProductos.getSelectedItem().toString();
-
-            for (int i = 0; i < productos.size(); i++) 
+            
+            if(isUberClient == true ) 
             {
-                if (productos.get(i).getDescripcion().matches(pro)) {
-                    codCadena = productos.get(i).getCodigo();
+                String pro = jcomboProductos.getSelectedItem().toString();
 
-                    txtDescripcion.setText(productos.get(i).getDescripcion());
-                    txtPrecio.setText(String.valueOf(productos.get(i).getPrecio()));
-                    //txtCantidad.requestFocus();
-                    productoSeleccionado = new Producto(productos.get(i).getCodigo(), productos.get(i).getDescripcion(), productos.get(i).getPrecio());
-                    txtCantidad.requestFocus();
+                for (int i = 0; i < productos.size(); i++) 
+                {
+                    if (productos.get(i).getDescripcion().matches(pro)) {
+                        codCadena = productos.get(i).getCodigo();
 
-                }
-            }
+                        txtDescripcion.setText(productos.get(i).getDescripcion());
+                        txtPrecio.setText(String.valueOf(productos.get(i).getPrecioUberEats()));
+                        //txtCantidad.requestFocus();
+                        productoSeleccionado = new Producto(productos.get(i).getCodigo(), productos.get(i).getDescripcion(), productos.get(i).getPrecioUberEats());
+                        txtCantidad.requestFocus();
+
+                    }
+                }                
+            }else
+            {
+                String pro = jcomboProductos.getSelectedItem().toString();
+
+                for (int i = 0; i < productos.size(); i++) 
+                {
+                    if (productos.get(i).getDescripcion().matches(pro)) {
+                        codCadena = productos.get(i).getCodigo();
+
+                        txtDescripcion.setText(productos.get(i).getDescripcion());
+                        txtPrecio.setText(String.valueOf(productos.get(i).getPrecio()));
+                        //txtCantidad.requestFocus();
+                        productoSeleccionado = new Producto(productos.get(i).getCodigo(), productos.get(i).getDescripcion(), productos.get(i).getPrecio());
+                        txtCantidad.requestFocus();
+
+                    }
+                }               
+            }          
         }
     }//GEN-LAST:event_jcomboProductosActionPerformed
 
@@ -1416,6 +1489,7 @@ public class pnlVentas extends javax.swing.JFrame {
             transporte = 0.0;           
             checkGuardarCliente.setSelected(false);
             checkEnviarFactura.setSelected(false);
+            isUberClient = false;
             limpiarTabla(); 
         }
     }//GEN-LAST:event_btnGenerarVentaActionPerformed
@@ -1590,6 +1664,7 @@ public class pnlVentas extends javax.swing.JFrame {
         enviarFactura = false;
         verificaCheckEmail();
         checkEnviarFactura.setSelected(false);
+        isUberClient = false;
     }
 
     public void fecha()

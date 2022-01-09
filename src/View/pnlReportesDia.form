@@ -122,11 +122,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="scrollPaneVentasDia" pref="461" max="32767" attributes="0"/>
+                      <Component id="scrollPaneVentasDia" min="-2" pref="461" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="btnDetalle" min="-2" pref="47" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="contenedorFactura" max="32767" attributes="0"/>
+                          <Component id="contenedorFactura" min="-2" pref="408" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
