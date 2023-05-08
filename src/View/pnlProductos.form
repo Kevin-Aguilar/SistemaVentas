@@ -24,7 +24,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="PanelMenu" alignment="0" pref="946" max="32767" attributes="0"/>
+          <Component id="PanelMenu" alignment="0" pref="945" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -51,7 +51,7 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="PanelDATOS" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="PanelBusqueda" pref="628" max="32767" attributes="0"/>
+                  <Component id="PanelBusqueda" pref="627" max="32767" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">

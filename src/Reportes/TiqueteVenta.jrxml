@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="164" pageHeight="708" columnWidth="164" leftMargin="0" rightMargin="0" topMargin="5" bottomMargin="5" uuid="cd9bf34e-e9d9-45ea-b441-af5f4106b707">
 	<property name="ireport.zoom" value="6.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="45"/>
+	<property name="ireport.y" value="468"/>
 	<parameter name="numero_factura" class="java.lang.String"/>
 	<parameter name="nombre_cliente" class="java.lang.String"/>
 	<parameter name="direccion_cliente" class="java.lang.String"/>
@@ -22,28 +22,28 @@
 				<textElement textAlignment="Center" markup="none">
 					<font fontName="Arial" size="8"/>
 				</textElement>
-				<text><![CDATA[Jairo Balladares Ced. 155802253220]]></text>
+				<text><![CDATA[Maria J. Cerdas Ced. 155802360404]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="0" width="136" height="13" forecolor="#000000" uuid="1bc63c29-ed4b-4086-9e61-f58f944a063e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[COMIDA CHINA EL DRAGÓN]]></text>
+				<text><![CDATA[COMIDA CHINA LAS ROSAS]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="24" width="136" height="19" uuid="8325b632-9c7f-4ae9-93ee-d43ab9c4d62c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="Arial" size="8"/>
 				</textElement>
-				<text><![CDATA[Brasil de Santa Ana, de la Iglesia Católica 500 mts Nor Oeste]]></text>
+				<text><![CDATA[Del Super Las Rosas 200 mts Oeste 175 mts Sur]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="43" width="136" height="11" uuid="35963b2e-f9c2-4db4-aa2b-f78395945683"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="Arial" size="8"/>
 				</textElement>
-				<text><![CDATA[Tel: 2282-3650]]></text>
+				<text><![CDATA[Tel: 2245-3198]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="92" y="59" width="44" height="20" uuid="eced1b55-0ff6-4913-b2e0-6603029c7c7c"/>
@@ -78,7 +78,7 @@
 				<text><![CDATA[Cliente:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="33" width="15" height="12" uuid="050f85b8-9c98-40f9-b04a-64e3c902481f"/>
+				<reportElement x="0" y="32" width="15" height="10" uuid="050f85b8-9c98-40f9-b04a-64e3c902481f"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Arial" size="8" isBold="false"/>
 				</textElement>
@@ -92,22 +92,22 @@
 				<textFieldExpression><![CDATA[$P{nombre_cliente}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="15" y="33" width="121" height="12" uuid="fd2896b7-a6c2-46fe-be0a-c1e753fe5ea0"/>
+				<reportElement stretchType="RelativeToBandHeight" x="15" y="32" width="121" height="10" uuid="fd2896b7-a6c2-46fe-be0a-c1e753fe5ea0"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{direccion_cliente}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="21" width="35" height="12" uuid="865f73ab-e2e3-443f-8764-3efe2b7cf3e8"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="0" y="21" width="35" height="10" uuid="865f73ab-e2e3-443f-8764-3efe2b7cf3e8"/>
+				<textElement verticalAlignment="Top">
 					<font fontName="Arial" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Teléfono:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="41" y="21" width="95" height="12" uuid="236adf85-2c08-4386-9fff-cb38106db0f6"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement stretchType="RelativeToBandHeight" x="41" y="21" width="95" height="10" uuid="236adf85-2c08-4386-9fff-cb38106db0f6"/>
+				<textElement verticalAlignment="Top">
 					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{telefono_cliente}]]></textFieldExpression>
@@ -126,7 +126,7 @@
 				</textElement>
 				<text><![CDATA[Vendedor:]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="41" y="1" width="95" height="10" uuid="09f88c8c-3c18-41cd-a512-a734751114ae"/>
 				<textElement>
 					<font fontName="Arial" size="8"/>

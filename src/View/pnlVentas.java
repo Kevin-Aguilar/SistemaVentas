@@ -1704,6 +1704,7 @@ public class pnlVentas extends javax.swing.JFrame {
         txtDescripcion.setText("");
         txtPrecio.setText("");
         txtCantidad.setText("");
+        transporte = 0.0;
     }
     
     private void limpiarTabla()
@@ -1719,6 +1720,7 @@ public class pnlVentas extends javax.swing.JFrame {
         
         limpiarVenta(); 
         txtTransporte.setText("");
+        transporte = 0.0;
         lblTotalPagar.setText("");
         txtNombre_cliente.setText("");
         txtTelefono_cliente.setText("");

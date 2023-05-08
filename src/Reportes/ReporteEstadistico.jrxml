@@ -23,7 +23,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[COMIDA CHINA EL DRAGÓN]]></text>
+				<text><![CDATA[COMIDA CHINA LAS ROSAS]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="40" width="35" height="10" uuid="3b38b018-d78b-478e-8860-87aa534b9902"/>
