@@ -231,7 +231,7 @@ public class DashboardPrincipal extends javax.swing.JFrame {
 
         lblTittleBussiness.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 28)); // NOI18N
         lblTittleBussiness.setForeground(new java.awt.Color(0, 153, 153));
-        lblTittleBussiness.setText("COMIDA CHINA EL DRAGÓN");
+        lblTittleBussiness.setText("COMIDA CHINA LAS ROSAS");
 
         btnSell.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnSell.setForeground(new java.awt.Color(44, 62, 80));

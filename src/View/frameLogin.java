@@ -57,7 +57,7 @@ public class frameLogin extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel5.setText("COMIDA CHINA EL DRAGÓN");
+        jLabel5.setText("COMIDA CHINA LAS ROSAS");
 
         javax.swing.GroupLayout PanelTOPVLayout = new javax.swing.GroupLayout(PanelTOPV);
         PanelTOPV.setLayout(PanelTOPVLayout);
