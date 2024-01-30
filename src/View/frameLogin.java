@@ -51,7 +51,7 @@ public class frameLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         PanelTOPV.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -82,12 +82,13 @@ public class frameLogin extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 153, 153));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login2.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo_rosas_login200px.png"))); // NOI18N
         jLabel8.setToolTipText("");
         jLabel8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        btnIngresar.setBackground(new java.awt.Color(0, 204, 204));
+        btnIngresar.setBackground(new java.awt.Color(51, 153, 0));
         btnIngresar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresar.setText("Ingresar");
         btnIngresar.setToolTipText("Ingresar");
         btnIngresar.setBorder(null);
@@ -99,8 +100,9 @@ public class frameLogin extends javax.swing.JFrame {
             }
         });
 
-        btnCancelar.setBackground(new java.awt.Color(0, 204, 204));
+        btnCancelar.setBackground(new java.awt.Color(255, 51, 51));
         btnCancelar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
         btnCancelar.setToolTipText("Cancelar");
         btnCancelar.setBorder(null);
@@ -140,9 +142,9 @@ public class frameLogin extends javax.swing.JFrame {
         PanelDatosVLayout.setHorizontalGroup(
             PanelDatosVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDatosVLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(PanelDatosVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelDatosVLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(PanelDatosVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
                             .addComponent(Label_NombreCliente6)
@@ -152,10 +154,8 @@ public class frameLogin extends javax.swing.JFrame {
                             .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtPassword_Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Label_NombreCliente7)))
-                    .addGroup(PanelDatosVLayout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel8)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(jLabel8))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelDatosVLayout.setVerticalGroup(
             PanelDatosVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,7 +209,7 @@ public class frameLogin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 415, Short.MAX_VALUE)
+            .addGap(0, 393, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)

@@ -261,6 +261,8 @@ public class pnlReportesDia extends javax.swing.JPanel {
             parametros.put("telefono_cliente", telefono);
             parametros.put("direccion_cliente", direccion);
             parametros.put("nombre_vendedor", vendedor);
+            //parametros.put("notaVenta", notaVenta);
+            parametros.put("ruta_logo", this.getClass().getResourceAsStream("/Images/logo_RosasNumber.png"));
 
             JasperReport reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/TiqueteVenta.jasper"));
             //JasperReport reporte = (JasperReport) JRLoader.loadObjectFromFile("src\\Reportes\\TiqueteReporte.jasper");//loadObject(jasperUrl);            

@@ -51,6 +51,7 @@ public class pnlReporteEstadistico extends javax.swing.JPanel {
     String patron = "###, ###. ##";
     DecimalFormat objDF = new DecimalFormat (patron);
     List<Detalle_Ventas> listaVentas;
+    double total = 0.0; //
     
     public pnlReporteEstadistico() {
         initComponents();
@@ -71,18 +72,7 @@ public class pnlReporteEstadistico extends javax.swing.JPanel {
         
         tableVentasEstadisticas.getColumn("Cantidad").setMaxWidth(65);   tableVentasEstadisticas.getColumn("Cantidad").setMinWidth(65); tableVentasEstadisticas.getColumn("Cantidad").setPreferredWidth(65);
         tableVentasEstadisticas.getColumn("Total").setMaxWidth(65);   tableVentasEstadisticas.getColumn("Total").setMinWidth(65); tableVentasEstadisticas.getColumn("Total").setPreferredWidth(65);
-        
-        
-        
-//        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modelo);
-//        tableVentasEstadisticas.setRowSorter(sorter);
-
-//        List<SortKey> sortKeys = new ArrayList<>();
-//        
-//        tableVentasEstadisticas.getColumnClass(0);
-//        sortKeys.add(new SortKey(0,javax.swing.SortOrder.DESCENDING));
-//        sorter.setSortKeys(sortKeys);
-        
+               
         scrollPaneVentasEstadisticas.setViewportView(tableVentasEstadisticas);  
     }
     
@@ -309,12 +299,7 @@ public class pnlReporteEstadistico extends javax.swing.JPanel {
   
     public void generarGrafico()
     {
-        
-//        datos.setValue("arroz cantones", n1);
-//        datos.setValue("chop suey en salsa", n2);
-//        datos.setValue("tacos chinos", n3);
-        
-        
+                      
         JFreeChart grafico = ChartFactory.createPieChart(
             "Productos más vendidos",
             datosGrafico,                    //datos    
@@ -326,8 +311,7 @@ public class pnlReporteEstadistico extends javax.swing.JPanel {
         ChartPanel panel = new ChartPanel(grafico);
         panel.setMouseWheelEnabled(true);
         panel.setPreferredSize(new Dimension(400,300));
-
-        
+       
         contenedorGrafico.removeAll();
         contenedorGrafico.setLayout(new BorderLayout());
         contenedorGrafico.add(panel, BorderLayout.NORTH);
@@ -341,8 +325,7 @@ public class pnlReporteEstadistico extends javax.swing.JPanel {
     {
         datosGrafico.clear(); limpiarTable(); 
         listaVentas = Ventas_controller.listarVentasPorPeriodoEstadistico(fechaInicio, fechaFinal);
-        String nombre = null;
-        String total = null;  
+        String nombre = null;   
         
         modelo = (DefaultTableModel) tableVentasEstadisticas.getModel();
         Object[] ob = new Object[3];
@@ -370,37 +353,7 @@ public class pnlReporteEstadistico extends javax.swing.JPanel {
         tableVentasEstadisticas.setModel(modelo);
         generarGrafico();
         //listaVentas.clear();
-    }
-    
-    
-    /*        limpiarTable();
-        List<Ventas> listaVentas = Ventas_controller.listarVentaPorUsuario(obtenerIndexUsuario(idUsuario));;
-        
-        modelo = (DefaultTableModel) tableVentasPorUsuario.getModel();
-        Object[] ob = new Object[7];
-        
-        for (int i = 0; i < listaVentas.size(); i++) 
-        {
-            ob[0] = listaVentas.get(i).getCodigoVenta();
-            pnlClientes.obtenerClientes();
-            
-            for (int j = 0; j < clientes.size(); j++) 
-            {
-                if (clientes.get(j).getCodigo() == listaVentas.get(i).getCodigoCliente()) 
-                {
-                    ob[1] = clientes.get(j).getNombre();
-                    ob[5] = clientes.get(j).getTelefono();
-                    ob[6] = clientes.get(j).getDireccion();
-                }
-            }
-            
-            ob[2] = Usuario_controller.buscarUsuario(listaVentas.get(i).getCodigoUsuario()).getNombre();
-            ob[3] = listaVentas.get(i).getTotal();
-            ob[4] = listaVentas.get(i).getFecha();
-            modelo.addRow(ob);
-        }
-        tableVentasPorUsuario.setModel(modelo);*/
-     
+    }   
      
     private boolean comparaFechas(java.sql.Date fechaInicio, java.sql.Date fechaFinal)
     {
@@ -448,8 +401,7 @@ public class pnlReporteEstadistico extends javax.swing.JPanel {
     }//GEN-LAST:event_btnImprimirActionPerformed
        
     public void generarReporteEstadistico(String Fecha_inicio, String Fecha_fin, String nombre_usuario)
-    {
-        
+    {        
         try 
         {
             //JasperReport reporte = null;
@@ -459,6 +411,7 @@ public class pnlReporteEstadistico extends javax.swing.JPanel {
             parametros.put("Fecha_inicio", Fecha_inicio);
             parametros.put("Fecha_fin", Fecha_fin);
             parametros.put("nombre_usuario", nombre_usuario);
+            parametros.put("total", Ventas_controller.totalSumaVentas);
 
             JasperReport reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/ReporteEstadistico.jasper"));
             JasperPrint jPrint = JasperFillManager.fillReport(reporte, parametros, new JRBeanCollectionDataSource(listaVentas));//JREmptyDataSource(
@@ -466,16 +419,13 @@ public class pnlReporteEstadistico extends javax.swing.JPanel {
             JasperPrintManager.printReport(jPrint, false);
             //JasperViewer vistaReporte = new JasperViewer(jPrint, false);
             //vistaReporte.setVisible(true);
-            //listaVentas.clear();
-
-            //vistaReporte.setVisible(true);           
+            //vistaReporte.setVisible(true);  
+            listaVentas.clear();
 
         } catch (JRException ex) {
             notificaciones("reporteVacio");
             System.out.println(ex.getMessage());
-        }
-        
-            
+        }    
     }
     
     

@@ -51,7 +51,8 @@ public class Ventas_controller
     
     public static List<Tiquete_venta> listaDetalle = new ArrayList<>();
     public static Tiquete_venta detalleReporte;
-
+    public static double totalSumaVentas = 0.0;
+    
     public Ventas_controller() {}
     
 
@@ -139,9 +140,7 @@ public class Ventas_controller
         return estado;
     }
     
-   
-    
-    
+  
     public static int getNumeroFactura()
     {
         int numeroFactura = 0;
@@ -320,8 +319,7 @@ public class Ventas_controller
     {
         
         List<Ventas> listaVentas = new ArrayList<>();
-        
-       
+         
         try 
         {
             miConexion = DriverManager.getConnection(url, user, password);
@@ -345,7 +343,6 @@ public class Ventas_controller
 //                
 //                listaVentas.add(venta);
 //            } 
-
 
             String sqlConsulta = "SELECT * FROM ventastest where id_usuario = ?";
             
@@ -383,8 +380,7 @@ public class Ventas_controller
       return listaVentas; 
     }   
     
-    
-    
+       
     public static List<Ventas> listarVentasDia()
     {
         List<Ventas> listaVentas = new ArrayList<>();
@@ -413,14 +409,12 @@ public class Ventas_controller
 //                listaVentas.add(venta);
 //            } 
 
-
             String sqlConsulta = "SELECT * FROM ventastest WHERE fecha = curdate()";
             
             miStatement = miConexion.prepareStatement(sqlConsulta);
             //miStatement.setString(1, fecha);
             miResult = miStatement.executeQuery();
-            
-            
+                       
             while(miResult.next())
             {
                 venta = new Ventas();
@@ -486,8 +480,7 @@ public class Ventas_controller
             miStatement.setDate(1, fechaInicio);
             miStatement.setDate(2, fechaFinal);
             miResult = miStatement.executeQuery();
-            
-            
+                       
             while(miResult.next())
             {
                 venta = new Ventas();
@@ -506,8 +499,7 @@ public class Ventas_controller
 
             miResult.close();
             miConexion.close();
-                        
-            
+                                   
             return listaVentas;      
         } catch (SQLException ex) 
         {
@@ -516,8 +508,7 @@ public class Ventas_controller
         return listaVentas;         
     }
     
-    
-    
+       
     public static List<Detalle_Ventas> listarVentasPorPeriodoEstadistico(Date fechaInicio, Date fechaFinal)
     {
         List<Detalle_Ventas> listaVentas = new ArrayList<>();
@@ -570,12 +561,12 @@ public class Ventas_controller
                 venta.setFecha(miResult.getDate("fecha"));;
 
                 listaVentas.add(venta);
+                totalSumaVentas += venta.getCantidad() * venta.getPrecio();
             }
-
+            
             miResult.close();
             miConexion.close();
-                        
-            
+                                   
             return listaVentas;      
         } catch (SQLException ex) 
         {
@@ -670,7 +661,7 @@ public class Ventas_controller
         }        
     }
     
-    public void generaReporteVenta(String factura, String vendedor, String cliente, String telefono, String direccion) throws FileNotFoundException
+    public void generaReporteVenta(String factura, String vendedor, String cliente, String telefono, String direccion, String notaVenta) throws FileNotFoundException
     {
         //obtenerDetalleVenta(103);
         try {
@@ -683,6 +674,8 @@ public class Ventas_controller
             parametros.put("telefono_cliente", telefono);
             parametros.put("direccion_cliente", direccion);
             parametros.put("nombre_vendedor", vendedor);
+            parametros.put("notaVenta", notaVenta);
+            parametros.put("ruta_logo", this.getClass().getResourceAsStream("/Images/logo_RosasNumber.png"));
             
             JasperReport reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/TiqueteVenta.jasper"));
             
@@ -690,13 +683,13 @@ public class Ventas_controller
                    
             JasperPrintManager.printReport(jPrint, false);
             
-//            JasperViewer vistaReporte = new JasperViewer(jPrint, false);
-//            vistaReporte.setVisible(true);
+            /*JasperViewer vistaReporte = new JasperViewer(jPrint, false);
+            vistaReporte.setVisible(true);*/
             listaDetalle.clear();
             
             
-            /********************************************************/
-
+            /**********************SE GENERAN FACTURA EN PDF**********************************/
+            
             //JasperExportManager.exportReportToPdfFile( jPrint, "Facturas/".concat(factura.concat(".pdf")));//"src/Facturas/"+factura+".pdf");
             //guardarFacturaPDF(parametros, listaDetalle, factura);
             

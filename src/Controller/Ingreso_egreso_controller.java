@@ -18,6 +18,7 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
@@ -158,9 +159,10 @@ public class Ingreso_egreso_controller
             JasperReport reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/ReporteCierre.jasper"));
             
             JasperPrint jPrint = JasperFillManager.fillReport(reporte, parametros, new JRBeanCollectionDataSource(listaConceptos));//JREmptyDataSource(
-                    
-            JasperViewer vistaReporte = new JasperViewer(jPrint, false);
-            vistaReporte.setVisible(true);
+            JasperPrintManager.printReport(jPrint, false);     
+            
+            //JasperViewer vistaReporte = new JasperViewer(jPrint, false);
+            //vistaReporte.setVisible(true);
             listaConceptos.clear();
             listaConceptos.add(conceptos);
             

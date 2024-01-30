@@ -3,25 +3,29 @@
 	<property name="ireport.zoom" value="4.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<parameter name="Fecha_inicio" class="java.lang.String"/>
 	<parameter name="Fecha_fin" class="java.lang.String"/>
 	<parameter name="nombre_usuario" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.Double">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<field name="cantidad" class="java.lang.Integer"/>
 	<field name="producto" class="java.lang.String"/>
 	<field name="ingreso" class="java.lang.Double"/>
 	<title>
 		<band height="65" splitType="Stretch">
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" x="0" y="16" width="136" height="23" uuid="b32271f5-480d-4aeb-b8f3-0c74c5498650"/>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="23" width="136" height="15" uuid="b32271f5-480d-4aeb-b8f3-0c74c5498650"/>
 				<textElement textAlignment="Center" markup="none">
 					<font fontName="Arial" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Reporte de Productos Vendidos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="1" width="136" height="13" uuid="1bc63c29-ed4b-4086-9e61-f58f944a063e"/>
+				<reportElement x="0" y="1" width="136" height="23" uuid="1bc63c29-ed4b-4086-9e61-f58f944a063e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[COMIDA CHINA LAS ROSAS]]></text>
 			</staticText>
@@ -138,7 +142,7 @@
 		</band>
 	</detail>
 	<summary>
-		<band height="11">
+		<band height="32">
 			<staticText>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="136" height="10" uuid="db1eb2a4-4b6a-4d2e-91fc-ac09db776a5c"/>
 				<textElement verticalAlignment="Top">
@@ -146,6 +150,20 @@
 				</textElement>
 				<text><![CDATA[------------------------------------------------------------]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="52" y="15" width="32" height="14" uuid="a2044fb1-ba7f-4ad4-878c-39663532c3a4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="83" y="15" width="53" height="14" uuid="9be08846-f47f-4abb-b215-b047475a7681"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>

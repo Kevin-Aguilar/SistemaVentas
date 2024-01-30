@@ -520,8 +520,7 @@ public class pnlCierreDiario extends javax.swing.JPanel {
            conceptos = new Ingreso_egreso(concept, entrada, salida, codiUser);
     
            Ingreso_egreso_controller.listaConceptos.add(conceptos);
-           
- 
+            
         }
         
            if(tableCierre.getRowCount() < 1 )
@@ -541,7 +540,6 @@ public class pnlCierreDiario extends javax.swing.JPanel {
         modelo.addColumn("Usuario");*/
 
         
-
 
 //
 //        if(dateInicial.getDatoFecha() != null && dateFinal.getDatoFecha() != null)
