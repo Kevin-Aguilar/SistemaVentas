@@ -494,6 +494,7 @@ public class pnlReportePeriodos extends javax.swing.JPanel {
             parametros.put("direccion_cliente", direccion);
             parametros.put("nombre_vendedor", vendedor);
             parametros.put("fecha", fecha);
+            parametros.put("ruta_logo", this.getClass().getResourceAsStream("/Images/logo_dragon.jpg"));
 
             JasperReport reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/TiqueteReporte.jasper"));
             //JasperReport reporte = (JasperReport) JRLoader.loadObjectFromFile("src\\Reportes\\TiqueteReporte.jasper");//loadObject(jasperUrl);            

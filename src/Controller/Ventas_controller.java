@@ -683,6 +683,7 @@ public class Ventas_controller
             parametros.put("telefono_cliente", telefono);
             parametros.put("direccion_cliente", direccion);
             parametros.put("nombre_vendedor", vendedor);
+            parametros.put("ruta_logo", this.getClass().getResourceAsStream("/Images/logo_dragon.jpg"));
             
             JasperReport reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/TiqueteVenta.jasper"));
             
@@ -690,14 +691,14 @@ public class Ventas_controller
                    
             JasperPrintManager.printReport(jPrint, false);
             
-//            JasperViewer vistaReporte = new JasperViewer(jPrint, false);
-//            vistaReporte.setVisible(true);
+            JasperViewer vistaReporte = new JasperViewer(jPrint, false);
+            vistaReporte.setVisible(true);
             listaDetalle.clear();
             
             
             /********************************************************/
 
-            //JasperExportManager.exportReportToPdfFile( jPrint, "Facturas/".concat(factura.concat(".pdf")));//"src/Facturas/"+factura+".pdf");
+            JasperExportManager.exportReportToPdfFile( jPrint, "Facturas/".concat(factura.concat(".pdf")));//"src/Facturas/"+factura+".pdf");
             //guardarFacturaPDF(parametros, listaDetalle, factura);
             
             
